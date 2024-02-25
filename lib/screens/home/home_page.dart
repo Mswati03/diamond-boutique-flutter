@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,12 +70,18 @@ class HomePage extends StatelessWidget {
                 onTap: (){
                    },
 
-                child:const SizedBox(
+                child:  SizedBox(
                   width: 34,
                   height: 8,
 
-                  child: Center(
-                    child: Text(
+                  child: Row(
+                    children : [
+                      Image.asset("images/homepage-imgs/men-img.png",
+                        height:300,
+                        width: 200,
+                      ),
+
+                    Text(
                       'MEN',
                       style: TextStyle(
                         color: Colors.black,
@@ -82,6 +90,7 @@ class HomePage extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
+                  ],
                   ),
                 ),
 
@@ -106,23 +115,52 @@ class HomePage extends StatelessWidget {
                     ),
                   ]),
               child: InkWell(
-                onTap: (){
-                   },
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return  LoadingAnimationWidget.newtonCradle(
+                          color: Colors.blueAccent,
+                          size: 50,
 
-                child:const SizedBox(
+
+
+                      );
+                    },
+                  );
+                  new Future.delayed(new Duration(seconds: 3), () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
+                  },
+                  );
+                },
+                child:  SizedBox(
                   width: 34,
                   height: 8,
 
-                  child: Center(
-                    child: Text(
-                      'WOMEN',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w400,
+                  child: Row(
+                    children : [
+                      const SizedBox(width: 100,),
+                      Text(
+                        'WOMEN',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
+
+                      Image.asset("images/homepage-imgs/women-img.png",
+                        height:500,
+                        width: 250,
+                      ),
+
+                    ],
                   ),
                 ),
 
