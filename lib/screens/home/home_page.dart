@@ -1,3 +1,4 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
@@ -68,6 +69,11 @@ class HomePage extends StatelessWidget {
                   ]),
               child: InkWell(
                 onTap: (){
+                  showOkAlertDialog(
+                    context: context,
+                    title: 'Men Portal Coming Soon',
+                    okLabel: 'OK',
+                  );
                    },
 
                 child:  SizedBox(
@@ -187,22 +193,37 @@ class HomePage extends StatelessWidget {
                   ]),
               child: InkWell(
                 onTap: (){
+                  showOkAlertDialog(
+                  context: context,
+                  title: 'Kids Portal Coming Soon',
+                    okLabel: 'OK',
+                  );
                    },
 
-                child:const SizedBox(
+                child:  SizedBox(
                   width: 34,
                   height: 8,
 
-                  child: Center(
-                    child: Text(
-                      'KIDS',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w400,
+                  child: Row(
+                    children : [
+                      const SizedBox(width: 20,),
+                      Image.asset("images/homepage-imgs/kids-img.png",
+                        height:500,
+                        width: 250,
                       ),
-                    ),
+                      Text(
+                        'KIDS',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+
+
+
+                    ],
                   ),
                 ),
 
